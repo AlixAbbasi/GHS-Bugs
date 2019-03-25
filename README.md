@@ -1,4 +1,4 @@
-# Vulnerabilities in Green Hills INTEGRITY RTOS v5.0.4.
+# Vulnerabilities in Green Hills INTEGRITY RTOS.
 In this report we are reporting vulnerabilities within Integrity RTOS 5.0.4. We will utilize the following vulnerabilities to bypass Interpeak IPShell jail in order to directly talk to the Integrity. 
 
 
@@ -110,8 +110,7 @@ BANK_A:018E2F64
 In the function handler for printing the current working directory the directory path is used as a first argu- ment to printf. This leads to a user supplied format string being executed. 
 
 
-
-## Interpeak IPCOMShell Print Prompt Heap Overflow Vulnerability (Use CVE-2019-7711)
+## Interpeak IPCOMShell Print Prompt Heap Overflow Vulnerability (CVE-2019-7713)
 There is a heap overflow vulnerability in the IPCOMShell used in Green Hills INTEGRITY RTOS v5.0.4. While it is not documented inside the "helpall" command provided by the IPCOMShell, typing "prompt <new_prompt>" allows the user to set the prompt. Looking at the implementation generating the shell output we can see those different modifiers are interpreted:
 
 * \i print ip address
@@ -121,13 +120,18 @@ There is a heap overflow vulnerability in the IPCOMShell used in Green Hills INT
 
 The function printing the shell prompt allows the use of custom modifiers to display information like process IDs or current IP address or current working directory. The expansion of those modifiers can trigger a heap-based buffer overflow and also leaks process address information potentially valuable to an attacker. This may result in memory corruption, crash or info leak. 
 
-## Interpeak IPCOMShell Undocumented Prompt Command Format String Vulnerability
+
+
+
+## Interpeak IPCOMShell Undocumented Prompt Command Format String Vulnerability (CVE-2019-7711)
 
 The non-documented shell command "prompt " sets the (user controlled) shell’s prompt value which is used as a format string input to printf, resulting in an information leak. 
 
 
+
 ## Interpeak IPCOMShell Process Greetings Format String Vulnerability (CVE-2019-7715)
-The main shell handler function uses the value of the environment variable "ipcom.shell.greeting" as the first argument to printf(). Setting the variable using the sysvar command results in a user-controlled format string during login, resulting in an information leak.
+
+
 
 ## Credit
 Tobias Scharnowski and Ali Abbasi of Ruhr University Bochum
