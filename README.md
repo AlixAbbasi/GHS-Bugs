@@ -129,3 +129,5 @@ The non-documented shell command "prompt " sets the (user controlled) shell’s 
 ## Interpeak IPCOMShell Process Greetings Format String Vulnerability (CVE-2019-7715)
 The main shell handler function uses the value of the environment variable "ipcom.shell.greeting" as the first argument to printf(). Setting the variable using the sysvar command results in a user-controlled format string during login, resulting in an information leak.
 
+## Credit
+Tobias Scharnowski and Ali Abbasi of Ruhr University Bochum
