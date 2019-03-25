@@ -1,4 +1,4 @@
-# Vulnerabilities in Green Hills INTEGRITY RTOS.
+# Vulnerabilities in Green Hills INTEGRITY RTOS v5.0.4.
 In this report we are reporting vulnerabilities within Integrity RTOS 5.0.4. We will utilize the following vulnerabilities to bypass Interpeak IPShell jail in order to directly talk to the Integrity. 
 
 
